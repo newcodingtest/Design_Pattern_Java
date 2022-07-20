@@ -1,15 +1,17 @@
 package com.designpattern.yoon.factorymethod;
 
+import com.designpattern.yoon.abstract_factory.AventeCarFactory;
+import com.designpattern.yoon.abstract_factory.AventePartsProFactory;
+import com.designpattern.yoon.abstract_factory.CarFactory;
+import com.designpattern.yoon.abstract_factory.Car;
 
 public class Client {
     public static void main(String[] args) {
-        Client client = new Client();
-        System.out.println();
-        client.print(new MorningCarFactory(), "윤주영", "yoon@mail.com");
-        client.print(new AventeCarFactory(), "홍길동", "yoon@mail.com");
+    	CarFactory carFactory = new AventeCarFactory(new AventePartsProFactory());
+    	Car car = carFactory.createCar();
+    	
+    	System.out.println(car);
     }
     
-    private void print(CarFactory carFactory, String name, String email) {
-        System.out.println(carFactory.orderCar(name, email));
-    }
+
 }
